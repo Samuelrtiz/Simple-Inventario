@@ -1,11 +1,20 @@
 import java.util.Scanner;
 
 public class SimpleAgenda {
+    String [] contactos = new String [10];
     public static void main(String[] args) {
 
         removerContacto(1250);
     }
     public static void agregarContacto() {
+
+        String [] contactos = new String [10];
+        Scanner sz = new Scanner(System.in);
+        System.out.println("Ingrese un contacto a agregar");
+
+         contactos = new String[]{sz.next()};
+
+         //--------------------------------------------------------------------
         String contacts;
         Scanner sc = new Scanner(System.in);
 
