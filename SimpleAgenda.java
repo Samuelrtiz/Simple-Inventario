@@ -1,94 +1,42 @@
 import java.util.Scanner;
 
 public class SimpleAgenda {
-
-    private static String[] contactos = new String[10];
-
     public static void main(String[] args) {
 
         removerContacto(1250);
     }
-
     public static void agregarContacto() {
+        String contacts;
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Ingrese un contacto a agregar:");
-        String nuevoContacto = sc.next();
+        System.out.println("Ingrese un nuevo contacto a agregar");
+        contacts = sc.next();
 
-
-        boolean existe = false;
-        for (String contacto : contactos) {
-            if (contacto != null && contacto.equals(nuevoContacto)) {
-                existe = true;
-                break;
-            }
-        }
-
-        if (existe) {
-            System.out.println("Ya se ha agregado anteriormente");
+        if (contacts.length() >= 4 && contacts.length() <= 8) {
+            System.out.println("El Contacto fue agregado con éxito");
+        } else if (contacts.length() > 8 && contacts.length() <= 30) {
+            System.out.println(" Agregado, contiene entre 8-30 caracteres");
         } else {
-
-            for (int i = 0; i < contactos.length; i++) {
-                if (contactos[i] == null) {
-                    contactos[i] = nuevoContacto;
-                    System.out.println("Agregado satisfactoriamente");
-                    break;
-                }
-            }
+            System.out.println("el Nombre es muy largo");
         }
     }
 
     public static void removerContacto(int id) {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese el contacto a remover:");
-        String contactoARemover = sc.next();
-
-        boolean encontrado = false;
-        for (int i = 0; i < contactos.length; i++) {
-            if (contactos[i] != null && contactos[i].equals(contactoARemover)) {
-                encontrado = true;
-                System.out.println("El contacto " + contactoARemover + " fue removido exitosamente!");
-
-                contactos[i] = null;
-                break;
-            }
+        if (id >= 1000 && id <= 9999) {
+            System.out.println("Verificando contacto a eliminar..");
+        } else {
+            System.out.println("el ID no es valido");
         }
 
-        if (!encontrado) {
-            System.out.println("No existe tal contacto");
-        }
     }
 
-
-    public static void mostrarContacto() {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese el contacto a mostrar:");
-        String contactoAMostrar = sc.next();
-
-        boolean encontrado = false;
-        for (String contacto : contactos) {
-            if (contacto != null && contacto.equals(contactoAMostrar)) {
-                encontrado = true;
-                System.out.println("El contacto " + contactoAMostrar + ".");
-                break;
-            }
-        }
-
-        if (!encontrado) {
-            System.out.println("No existen registros de este contacto");
-        }
+    public static String actualizarContacto(int a) {
+        return "N/A";
     }
 
     public static void mostrarContactos() {
-        System.out.println("Mostrando contactos…");
-        for (String contacto : contactos) {
-            if (contacto != null) {
-                System.out.println(contacto);
-            }
-        }
+        System.out.println("Mostrando contactos..");
+
     }
+
 }
