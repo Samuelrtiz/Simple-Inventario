@@ -1,12 +1,33 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class SimpleAgenda {
 
+
+
+    public static void generarArchivo() throws IOException {
+
+        File f = new File("Contactos.txt");
+        f.createNewFile();
+
+        FileWriter Fw = new FileWriter (f);
+
+        Fw.write("contacto,telefono\n" + "Adan,8098551212\n" + "Enmanuel,8294118787\n" + "Raider,8097410032\n"
+                + "Roger,8095554141\n" );
+
+        Fw.close();
+    }
+
     private static String[] contactos = new String[10];
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        removerContacto(1250);
+       // removerContacto(1250);
+
+        generarArchivo();
+
     }
 
     public static void agregarContacto() {
@@ -62,6 +83,8 @@ public class SimpleAgenda {
     }
 
     public static void mostrarContacto() {
+
+
 
         Scanner sc = new Scanner(System.in);
 
