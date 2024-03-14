@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -28,9 +29,39 @@ public class SimpleAgenda {
 
         generarArchivo();
 
+        agregarContacto();
+
+        //mostrarContacto();
+
     }
 
-    public static void agregarContacto() {
+
+    public static void agregarContacto() throws FileNotFoundException {
+
+        File fsC = new File("Contactos.txt");
+        Scanner scF = new Scanner(fsC);
+
+
+        StringBuilder contactosRegistrados = new StringBuilder();
+        String contactoAmostrar = null;
+        while (scF.hasNextLine()) {
+            contactosRegistrados.append(scF.nextLine()).append("\n");
+
+
+        }
+
+
+        Scanner scCA = new Scanner(System.in);
+        System.out.println("Ingrese el nombre a consultar: ");
+        String contactoAMostrar = scCA.nextLine();
+
+        if (contactosRegistrados.toString().contains(contactoAMostrar)) {
+            System.out.println("el contacto " + contactoAMostrar + "existe. ");
+        } else {
+            System.out.println("no existen registros de este contacto.");
+        }
+
+
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Ingrese un contacto a agregar:");
