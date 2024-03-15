@@ -7,16 +7,15 @@ import java.util.Scanner;
 public class SimpleAgenda {
 
 
-
     public static void generarArchivo() throws IOException {
 
         File f = new File("Contactos.txt");
         f.createNewFile();
 
-        FileWriter Fw = new FileWriter (f);
+        FileWriter Fw = new FileWriter(f);
 
         Fw.write("contacto,telefono\n" + "Adan,8098551212\n" + "Enmanuel,8294118787\n" + "Raider,8097410032\n"
-                + "Roger,8095554141\n" );
+                + "Roger,8095554141\n");
 
         Fw.close();
     }
@@ -25,13 +24,13 @@ public class SimpleAgenda {
 
     public static void main(String[] args) throws IOException {
 
-       // removerContacto(1250);
+        // removerContacto(1250);
 
         generarArchivo();
 
-        agregarContacto();
+        //agregarContacto();
 
-        //mostrarContacto();
+        mostrarContacto();
 
     }
 
@@ -116,7 +115,6 @@ public class SimpleAgenda {
     public static void mostrarContacto() {
 
 
-
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Ingrese el contacto a mostrar:");
@@ -137,10 +135,25 @@ public class SimpleAgenda {
     }
 
     public static void mostrarContactos() {
+
         System.out.println("Mostrando contactos…");
-        for (String contacto : contactos) {
-            if (contacto != null) {
-                System.out.println(contacto);
+        try {
+            File f = new File("contactos.txt");
+            Scanner scanner = new Scanner(f);
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                System.out.println(scanner.nextLine());
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Archivo no encontrado");
+            e.printStackTrace();
+
+            System.out.println("Mostrando contactos…");
+            for (String contacto : contactos) {
+                if (contacto != null) {
+                    System.out.println(contacto);
+                }
             }
         }
     }
